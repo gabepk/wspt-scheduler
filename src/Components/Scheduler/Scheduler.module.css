@@ -1,0 +1,6 @@
+.scheduler {
+  display: grid;
+  grid-template-rows: auto auto 2fr 2fr;
+  min-height: 100vh; /* footer always on the bottom */
+  gap: 2rem;
+}
