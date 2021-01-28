@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <p>Amazon - All rights reserved</p>
+      <p>All rights reserved</p>
     </div>
   );
 };
