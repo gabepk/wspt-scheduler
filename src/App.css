@@ -95,6 +95,12 @@ a {
   }
 }
 
+input.editable {
+  cursor: initial;
+  border: 1px solid black;
+  outline: initial;
+}
+
 .App {
   display: flex;
   flex-direction: column;

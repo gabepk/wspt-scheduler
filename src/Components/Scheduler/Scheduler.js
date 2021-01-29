@@ -1,23 +1,29 @@
 import React from 'react';
+import Epic from './Epic';
 import styles from './Scheduler.module.css';
 import Task from './Task';
 
 const Scheduler = () => {
-  const [tasks, setTasks] = React.useState([]);
+  const [epics, setEpics] = React.useState(null);
 
   React.useEffect(() => {
-    setTasks([
-      { name: 'A', weight: 2, estimation: 2 },
-      { name: 'B', weight: 1, estimation: 3 },
-      { name: 'c', weight: 2, estimation: 3 },
-    ]);
+    const localEpicsStr = window.localStorage.getItem('epics');
+    const localEpics = JSON.parse(localEpicsStr);
+    setEpics(localEpics || []);
   }, []);
+
+  function getNextId() {
+    return epics.length === 0
+      ? 0
+      : Math.max(...epics.map((epic) => epic.id)) + 1;
+  }
 
   return (
     <div className={`${styles.scheduler} container mainContainer`}>
-      <div>Epic (crud)</div>
-      <div>Task (crud)</div>
-      <Task tasks={tasks} />
+      {epics !== null && (
+        <Epic epics={epics} setEpics={setEpics} nextId={getNextId()} />
+      )}
+      <Task />
       <div>Form to create SIM for selected tasks</div>
     </div>
   );
