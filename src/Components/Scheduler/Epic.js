@@ -5,11 +5,6 @@ const Epic = ({ epics, setEpics, nextId }) => {
   const [newEpic, setNewEpic] = React.useState('');
   const [counter, setCounter] = React.useState(nextId);
 
-  React.useEffect(() => {
-    // TODO: Optimize and add/remove one epic per interaction
-    window.localStorage.setItem('epics', JSON.stringify(epics));
-  }, [epics]);
-
   function addEpic() {
     if (!newEpic || newEpic.length <= 0) return;
     const epicAlreadyExists = epics.find((epic) => epic.name === newEpic);
@@ -25,12 +20,12 @@ const Epic = ({ epics, setEpics, nextId }) => {
 
   function updateEpic({ target }) {
     const newEpics = [...epics];
-    newEpics[target.id].name = target.value;
+    newEpics.find((epic) => epic.id === target.id).name = target.value;
     setEpics(newEpics);
   }
 
   function deleteEpic(id) {
-    setEpics((epics) => epics.filter((epic) => epic.id !== Number(id)));
+    setEpics((epics) => epics.filter((epic) => epic.id !== id));
   }
 
   return (
