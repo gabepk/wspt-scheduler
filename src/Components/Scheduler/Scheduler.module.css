@@ -1,6 +1,6 @@
 .scheduler {
-  display: grid;
-  grid-template-rows: auto auto 2fr 2fr;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh; /* footer always on the bottom */
-  gap: 2rem;
+  gap: 8rem;
 }

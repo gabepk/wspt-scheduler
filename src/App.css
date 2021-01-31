@@ -10,6 +10,7 @@ body {
   --type-second: 'Spectral', Georgia;
   font-family: var(--type-first);
   padding-top: 4rem;
+  background: #f4f4ef;
 }
 
 h1,
@@ -57,7 +58,7 @@ a {
 }
 
 .mainContainer {
-  margin-top: 2rem;
+  padding-left: 2rem;
 }
 
 .title {
@@ -95,10 +96,15 @@ a {
   }
 }
 
+input {
+  padding: 8px 4px;
+  border: 1px solid #333;
+}
+
 input.editable {
   cursor: initial;
-  border: 1px solid black;
   outline: initial;
+  background: white !important;
 }
 
 .App {
@@ -109,4 +115,5 @@ input.editable {
 
 .AppBody {
   flex: 1; /* Will expand and make footer go to the bottom of the page */
+  margin: 2rem 0;
 }

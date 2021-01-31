@@ -3,7 +3,7 @@
   position: fixed;
   width: 100%;
   z-index: 100; /* Stays above other items */
-  background: white; /* Default is transparent */
+  background: repeating-linear-gradient(90deg, #f4f4ef, white 10px);
   top: 0px;
 }
 

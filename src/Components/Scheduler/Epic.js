@@ -29,17 +29,18 @@ const Epic = ({ epics, setEpics, nextId }) => {
   }
 
   return (
-    <div className={styles.epics}>
-      <input
-        type="text"
-        placeholder="Epic"
-        value={newEpic}
-        onChange={({ target }) => setNewEpic(target.value)}
-      />
-      <button className={styles.addButton} onClick={addEpic}>
-        +
-      </button>
-      <ul>
+    <div>
+      <div className={styles.newEpic}>
+        <input
+          type="text"
+          placeholder="Epic"
+          value={newEpic}
+          onChange={({ target }) => setNewEpic(target.value)}
+        />
+        <button onClick={addEpic}>Add Epic</button>
+      </div>
+
+      <ul className={styles.epics}>
         {epics.map((epic) => {
           return (
             <li className={styles.epic} key={epic.id}>

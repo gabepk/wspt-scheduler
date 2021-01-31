@@ -67,106 +67,102 @@ const Task = ({ tasks, setTasks, nextId }) => {
   }
 
   return (
-    <table className={styles.task}>
-      <caption>Task List (table with option to edit)</caption>
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Weight</th>
-          <th>Estimation</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input
-              type="text"
-              placeholder="Task"
-              value={newTask.name}
-              onChange={({ target }) =>
-                setNewTask({ ...newTask, name: target.value })
-              }
-            />
-          </td>
-          <td>
-            <input
-              type="number"
-              placeholder="0"
-              value={newTask.weight}
-              onChange={({ target }) =>
-                setNewTask({ ...newTask, weight: Number(target.value) })
-              }
-            />
-          </td>
-          <td>
-            <input
-              type="number"
-              placeholder="0"
-              value={newTask.estimation}
-              onChange={({ target }) =>
-                setNewTask({ ...newTask, estimation: Number(target.value) })
-              }
-            />
-          </td>
-          <td>
-            <button className={styles.addButton} onClick={addTask}>
-              +
-            </button>
-          </td>
-        </tr>
-        {tasks.map((task) => {
-          return (
-            <tr key={task.id}>
-              <td>
-                <input
-                  type="text"
-                  className={styles.taskInput}
-                  value={task.name}
-                  onClick={({ target }) => target.classList.add('editable')}
-                  onChange={({ target }) =>
-                    updateTaskName(task.id, target.value)
-                  }
-                  onBlur={({ target }) => target.classList.remove('editable')}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.taskInput}
-                  value={task.weight}
-                  onClick={({ target }) => target.classList.add('editable')}
-                  onChange={({ target }) =>
-                    updateTaskWeight(task.id, target.value)
-                  }
-                  onBlur={({ target }) => target.classList.remove('editable')}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.taskInput}
-                  value={task.estimation}
-                  onClick={({ target }) => target.classList.add('editable')}
-                  onChange={({ target }) =>
-                    updateTaskEstimation(task.id, target.value)
-                  }
-                  onBlur={({ target }) => target.classList.remove('editable')}
-                />
-              </td>
-              <td>
-                <button
-                  className={styles.removeButton}
-                  onClick={() => deleteTask(task.id)}
-                >
-                  x
-                </button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <section className={styles.task}>
+      <div className={styles.row}>
+        <div>Task</div>
+        <div>Weight (1-5)</div>
+        <div>Estimation (min)</div>
+        <div></div>
+      </div>
+      <div className={styles.row}>
+        <div>
+          <input
+            type="text"
+            placeholder="Task"
+            value={newTask.name}
+            onChange={({ target }) =>
+              setNewTask({ ...newTask, name: target.value })
+            }
+          />
+        </div>
+        <div>
+          <input
+            type="number"
+            placeholder="0"
+            value={newTask.weight}
+            onChange={({ target }) =>
+              setNewTask({ ...newTask, weight: Number(target.value) })
+            }
+          />
+        </div>
+        <div>
+          <input
+            type="number"
+            placeholder="0"
+            value={newTask.estimation}
+            onChange={({ target }) =>
+              setNewTask({ ...newTask, estimation: Number(target.value) })
+            }
+          />
+        </div>
+        <div>
+          <button className={styles.addButton} onClick={addTask}>
+            +
+          </button>
+        </div>
+      </div>
+      {tasks.map((task) => {
+        return (
+          <div className={`${styles.row} ${styles.savedTasks}`} key={task.id}>
+            <div>
+              <input
+                type="text"
+                className={styles.taskInput}
+                value={task.name}
+                onClick={({ target }) => target.classList.add('editable')}
+                onChange={({ target }) => updateTaskName(task.id, target.value)}
+                onBlur={({ target }) => target.classList.remove('editable')}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                min="1"
+                max="5"
+                className={styles.taskInput}
+                value={task.weight}
+                onClick={({ target }) => target.classList.add('editable')}
+                onChange={({ target }) =>
+                  updateTaskWeight(task.id, target.value)
+                }
+                onBlur={({ target }) => target.classList.remove('editable')}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                min="1"
+                className={styles.taskInput}
+                value={task.estimation}
+                onClick={({ target }) => target.classList.add('editable')}
+                onChange={({ target }) =>
+                  updateTaskEstimation(task.id, target.value)
+                }
+                onBlur={({ target }) => target.classList.remove('editable')}
+              />
+            </div>
+            <div>
+              <button
+                className={styles.removeButton}
+                onClick={() => deleteTask(task.id)}
+              >
+                x
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </section>
   );
 };
 
