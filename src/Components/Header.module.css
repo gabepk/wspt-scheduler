@@ -5,6 +5,9 @@
   z-index: 100; /* Stays above other items */
   background: repeating-linear-gradient(90deg, #f4f4ef, white 10px);
   top: 0px;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bold;
 }
 
 .nav {

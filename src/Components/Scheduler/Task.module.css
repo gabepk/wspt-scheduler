@@ -57,7 +57,7 @@ input {
   text-align: center;
   color: #999;
 }
-
+/* 
 @media (max-width: 500px) {
   .task div.row {
     display: grid;
@@ -65,4 +65,4 @@ input {
     grid-template-columns: auto;
     margin-bottom: 2rem;
   }
-}
+} */
