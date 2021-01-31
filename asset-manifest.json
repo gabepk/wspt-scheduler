@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/wspt-scheduler/static/css/main.2bbfc10c.chunk.css",
+    "main.js": "/wspt-scheduler/static/js/main.3135b67c.chunk.js",
+    "main.js.map": "/wspt-scheduler/static/js/main.3135b67c.chunk.js.map",
+    "runtime-main.js": "/wspt-scheduler/static/js/runtime-main.43f74cd6.js",
+    "runtime-main.js.map": "/wspt-scheduler/static/js/runtime-main.43f74cd6.js.map",
+    "static/js/2.b287e0c1.chunk.js": "/wspt-scheduler/static/js/2.b287e0c1.chunk.js",
+    "static/js/2.b287e0c1.chunk.js.map": "/wspt-scheduler/static/js/2.b287e0c1.chunk.js.map",
+    "index.html": "/wspt-scheduler/index.html",
+    "static/css/main.2bbfc10c.chunk.css.map": "/wspt-scheduler/static/css/main.2bbfc10c.chunk.css.map",
+    "static/js/2.b287e0c1.chunk.js.LICENSE.txt": "/wspt-scheduler/static/js/2.b287e0c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.43f74cd6.js",
+    "static/js/2.b287e0c1.chunk.js",
+    "static/css/main.2bbfc10c.chunk.css",
+    "static/js/main.3135b67c.chunk.js"
+  ]
+}
