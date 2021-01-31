@@ -16,12 +16,20 @@ const Task = ({ tasks, setTasks, nextId }) => {
 
   function addTask() {
     if (!newTask || !newTask.name || newTask.name.length <= 0) return;
+
+    if (newTask.estimation && newTask.estimation < 1) return;
+
+    if (newTask.weight && (newTask.weight < 1 || newTask.weight > 5)) return;
+
     const taskAlreadyExists = tasks.find((task) => task.name === newTask.name);
     if (taskAlreadyExists) {
       alert('Task already exists');
     } else {
       const task = { ...newTask, id: counter };
       setCounter(counter + 1);
+
+      task.weight = task.weight || 1;
+      task.estimation = task.estimation || 1;
 
       const newTasks = [...tasks, task];
       updateTasksSorted(newTasks);
@@ -70,15 +78,24 @@ const Task = ({ tasks, setTasks, nextId }) => {
     <section className={styles.task}>
       <div className={styles.row}>
         <div>Task</div>
-        <div>Weight (1-5)</div>
-        <div>Estimation (min)</div>
+        <div>
+          Time
+          <br />
+          (min)
+        </div>
+        <div>
+          Weight
+          <br />
+          (1-5)
+        </div>
+        <div className={styles.order}>T / W</div>
         <div></div>
       </div>
-      <div className={styles.row}>
+      <div className={`${styles.row} ${styles.newTaskForm}`}>
         <div>
           <input
             type="text"
-            placeholder="Task"
+            placeholder="Wash the dishes"
             value={newTask.name}
             onChange={({ target }) =>
               setNewTask({ ...newTask, name: target.value })
@@ -89,9 +106,10 @@ const Task = ({ tasks, setTasks, nextId }) => {
           <input
             type="number"
             placeholder="0"
-            value={newTask.weight}
+            value={newTask.estimation}
             onChange={({ target }) =>
-              setNewTask({ ...newTask, weight: Number(target.value) })
+              Number(target.value) > 0 &&
+              setNewTask({ ...newTask, estimation: Number(target.value) })
             }
           />
         </div>
@@ -99,11 +117,18 @@ const Task = ({ tasks, setTasks, nextId }) => {
           <input
             type="number"
             placeholder="0"
-            value={newTask.estimation}
+            value={newTask.weight}
             onChange={({ target }) =>
-              setNewTask({ ...newTask, estimation: Number(target.value) })
+              Number(target.value) > 0 &&
+              Number(target.value) < 6 &&
+              setNewTask({ ...newTask, weight: Number(target.value) })
             }
           />
+        </div>
+        <div className={styles.order}>
+          {newTask.estimation && newTask.weight
+            ? parseFloat(newTask.estimation / newTask.weight).toFixed(1)
+            : '-'}
         </div>
         <div>
           <button className={styles.addButton} onClick={addTask}>
@@ -128,6 +153,19 @@ const Task = ({ tasks, setTasks, nextId }) => {
               <input
                 type="number"
                 min="1"
+                className={styles.taskInput}
+                value={task.estimation}
+                onClick={({ target }) => target.classList.add('editable')}
+                onChange={({ target }) =>
+                  updateTaskEstimation(task.id, target.value)
+                }
+                onBlur={({ target }) => target.classList.remove('editable')}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                min="1"
                 max="5"
                 className={styles.taskInput}
                 value={task.weight}
@@ -138,18 +176,8 @@ const Task = ({ tasks, setTasks, nextId }) => {
                 onBlur={({ target }) => target.classList.remove('editable')}
               />
             </div>
-            <div>
-              <input
-                type="number"
-                min="1"
-                className={styles.taskInput}
-                value={task.estimation}
-                onClick={({ target }) => target.classList.add('editable')}
-                onChange={({ target }) =>
-                  updateTaskEstimation(task.id, target.value)
-                }
-                onBlur={({ target }) => target.classList.remove('editable')}
-              />
+            <div className={styles.order}>
+              {parseFloat(task.estimation / task.weight).toFixed(1)}
             </div>
             <div>
               <button

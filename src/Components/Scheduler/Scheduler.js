@@ -8,9 +8,10 @@ const Scheduler = () => {
   const [tasks, setTasks] = React.useState(null);
 
   React.useEffect(() => {
-    const localEpicsStr = window.localStorage.getItem('epics');
-    const localEpics = JSON.parse(localEpicsStr);
-    setEpics(localEpics || []);
+    // TODO: Connect Epic with Task
+    // const localEpicsStr = window.localStorage.getItem('epics');
+    // const localEpics = JSON.parse(localEpicsStr);
+    // setEpics(localEpics || []);
 
     const localTasksStr = window.localStorage.getItem('tasks');
     const localTasks = JSON.parse(localTasksStr);

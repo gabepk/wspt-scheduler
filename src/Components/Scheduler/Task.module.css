@@ -1,3 +1,7 @@
+.newTaskForm input {
+  padding: 8px 4px;
+}
+
 .taskInput {
   outline: none;
   border: none;
@@ -11,12 +15,13 @@
 
 .task div.row {
   display: grid;
-  grid-template-columns: 4fr 1fr 1fr auto;
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 
 .task div.row.savedTasks {
   border-bottom: 1px solid #ddd;
+  padding: 8px 4px;
 }
 
 .task div.row.savedTasks input {
@@ -32,10 +37,9 @@ input {
   background-color: transparent;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
-  margin: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0;
   cursor: pointer;
-  border: currentColor solid 1px;
 }
 
 .task button.removeButton {
@@ -46,6 +50,12 @@ input {
 .task button.addButton {
   color: #59a674;
   background-color: #dbece1;
+  margin-left: -3px;
+}
+
+.order {
+  text-align: center;
+  color: #999;
 }
 
 @media (max-width: 500px) {
