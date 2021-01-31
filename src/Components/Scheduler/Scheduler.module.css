@@ -1,6 +1,0 @@
-.scheduler {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* footer always on the bottom */
-  gap: 8rem;
-}
